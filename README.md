@@ -155,6 +155,24 @@ schedule:
 | Vault dormancy | Automated Pulse via CI schedule |
 | Payload bloat on search | Projection-optimized queries (no payload in Echo) |
 
+## ◈ Internal Protocol Stack
+
+> Execution order for runtime initialization:
+
+```
+ A — Authenticate via Gate β, establish session token
+ L — Load entity index from Vault α (lightweight projection)
+ O — Open Cartographer (Σ1) with debounced query listener
+ ·
+ L — Locate target node, resolve ref → ident mapping
+ A — Acquire full payload from Vault α for selected entity
+ ·
+ L — Launch Lens (Σ2), decompose payload into tabbed manifold
+ O — Optional: invoke Origin Ω for live credential resolution
+```
+
+> _Protocol revision: `0xA10`_ · _Sequence is deterministic._
+
 ---
 
 <p align="center">
